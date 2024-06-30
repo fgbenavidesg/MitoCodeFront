@@ -1,0 +1,85 @@
+<div class="container">
+  <section class="section-content">
+      <h4>Buscar por DNI del cliente</h4>
+      <mat-form-field appearance="outline" >
+        <mat-label>DNI</mat-label>
+        <input matInput [formControl]="clientDniControl" />
+      </mat-form-field>
+      <button style="margin-left: 10px;" type="button" class="btn btn-success" [disabled]="clientDniControl.invalid" (click)="obtenerPedidos()">
+        <i class="bi bi-search"></i>
+      </button>
+  </section>
+  <section class="section-content">
+    <button type="button" style="margin-bottom: 10px; " class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPedido-modal">
+      <i class="bi bi-floppy"></i>
+      Agregar Pedido
+    </button>
+    <table mat-table [dataSource]="pedidos" class="mat-elevation-z8">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> CodPedido </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Nombres Column -->
+      <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+        <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
+      </ng-container>
+
+      <!-- Apellidos Column -->
+      <ng-container matColumnDef="libro">
+        <th mat-header-cell *matHeaderCellDef> Libro </th>
+        <td mat-cell *matCellDef="let element"> {{element.libro }} </td>
+      </ng-container>
+
+      <!-- DNI Column -->
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecha}} {{element.hora}}</td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status ? 'Activo' : 'Desactivado'}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </section>
+</div>
+
+<!-- Modal add-->
+<div class="modal fade" id="addPedido-modal" tabindex="-1" aria-labelledby="addPedido-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addPedido-modal">Agregar Pedido</h1>
+        <button type="button" #closeButtonAdd class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="pedidoForm">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>ID CLIENTE</mat-label>
+            <input matInput formControlName="clienteId" />
+            @if (pedidoForm.controls.clienteId.hasError('required')) {
+              <mat-error>El ID del Cliente es requerido</mat-error>
+              }
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>ID LIBRO</mat-label>
+            <input matInput formControlName="librosId" />
+            @if (pedidoForm.controls.librosId.hasError('required')) {
+              <mat-error>El ID del Libro es requerido</mat-error>
+              }
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button color="primary"  (click)="agregarPedido()" [disabled]="pedidoForm.invalid">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

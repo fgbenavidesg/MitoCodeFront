@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div style="display: flex;justify-content: center;">
+  <section class="card">
+    <div class="card-content" style="height: 100%;"
+      routerLink="/home/crud-clientes"
+      routerLinkActive="active"
+    >
+      <i class="bi bi-person-check" style="font-size: 30px;color: #1E0342;text-align: center;"></i>
+      <h2 class="card-title text-b" >Crud Clientes</h2>
+      <p class="card-text">Aqui Podras Gestionar los Clientes</p>
+    </div>
+  </section>
+  <section class="card">
+    <div class="card-content" style="height: 100%;"
+      routerLink="/home/crud-libros"
+      routerLinkActive="active"
+    >
+    <i class="bi bi-journal-check" style="font-size: 30px;color: #1E0342;text-align: center;"></i>
+      <h2 class="card-title text-b">Crud Libros</h2>
+      <p class="card-text">Aqui Podras Gestionar los Clientes</p>
+    </div>
+  </section>
+  <section class="card">
+    <div class="card-content" style="height: 100%;"
+      routerLink="/home/gestionar-pedidos"
+      routerLinkActive="active"
+    >
+
+    <i class="bi bi-passport" style="font-size: 30px;color: #1E0342;text-align: center;"></i>
+      <h2 class="card-title text-b">Gestionar Pedidos</h2>
+      <p class="card-text">Asigna un libro a un cliente y lista por DNI</p>
+    </div>
+  </section>
+</div>
+<router-outlet></router-outlet>

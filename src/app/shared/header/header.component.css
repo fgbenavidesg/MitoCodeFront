@@ -1,0 +1,11 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.header {
+  background-image: linear-gradient(to right, #c0dcf0, #b7d9ef, #9dd0eb, #76c1e5, #64adde, #5698d5, #4376bd, #345b95, #345b95);
+  padding: 20px 20px;
+}
+
+
+
